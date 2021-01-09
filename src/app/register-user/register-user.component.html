@@ -1,0 +1,17 @@
+<div class="container">
+  <label for="username"><b>Username</b></label>
+  <input type="text" placeholder="Enter Username" name="username" id="username" required [(ngModel)]="unpmername">
+
+  <label for="password"><b>Password</b></label>
+  <input type="password" placeholder="Enter Password" name="password" id="password" required [(ngModel)]="user.password">
+
+  <label for="email"><b>Email</b></label>
+  <input type="text" placeholder="Enter email" name="email" id="email" required [(ngModel)]="user.email">
+
+  <label for="user-type">Roles</label>
+  <select id="user-type" name="user-type" required [(ngModel)]="user.userType">
+    <option *ngFor="let uT of userTypes" [ngValue]="uT">{{uT}}</option>
+  </select>
+
+  <button type="submit" (click)="save()">Save</button>
+</div>
