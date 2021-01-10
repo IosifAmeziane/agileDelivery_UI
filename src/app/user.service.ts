@@ -1,17 +1,23 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {User} from './model/User';
+import {User, UserDtoResponse} from './model/User';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
+  baseUrl = 'http://localhost:8081/users';
   constructor(private http: HttpClient) {
 
   }
 
   saveUser(user: User)  {
     return this.http.post('http://localhost:8081/users', user);
+  }
+
+  findEmail(email: string): Observable<UserDtoResponse> {
+    return this.http.get<UserDtoResponse>(`${this.baseUrl}?email=${email}`);
   }
 }

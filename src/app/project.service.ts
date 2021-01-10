@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {ProjectRequestDto} from './model/Project';
+import {ProjectRequestDto, ProjectResponseDto} from './model/Project';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -16,16 +16,26 @@ export class ProjectService {
     return this.http.post(`${this.baseUrl}`, project);
   }
 
-  // http://localhost:8080/projects/1
-  getProjectById(id: number): Observable<Object> {
-    return this.http.get<ProjectRequestDto>(`${this.baseUrl}+/${id}`);
+  getProjectById(id: number): Observable<ProjectResponseDto> {
+    return this.http.get<ProjectResponseDto>(`${this.baseUrl}/${id}`);
   }
 
   assignUserToProject(projectName: string, username: string) {
-    return this.http.get(`${this.baseUrl}?projectName=${projectName}&username=${username}`);
+      console.log("called assign user");
+      const obj = this.http.get<any>(`${this.baseUrl}/assign-users?projectName=${projectName}&username=${username}`)
+        .subscribe(data => {
+          console.log(data);
+        }, error => {
+          console.log(error);
+        });
+      console.log(obj);
   }
 
-  getProjectList(): Observable<Object> {
-    return this.http.get<ProjectRequestDto>(`${this.baseUrl}`);
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  }
+
+  getProjectList(): Observable<ProjectResponseDto[]> {
+    return this.http.get<ProjectResponseDto[]>(`${this.baseUrl}`);
   }
 }

@@ -5,8 +5,8 @@ import {AuthenticationService} from './login/authentication.service';
 @Injectable()
 export class HttpInterceptorService implements HttpInterceptor {
   constructor(private authenticationService: AuthenticationService) { }
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log("in intercept");
     if (this.authenticationService.getBasicAuthFlagFromSessionStorage() && req.url.indexOf('basicauth') === -1) {
       const authReq = req.clone({
           headers: new HttpHeaders({

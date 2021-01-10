@@ -4,3 +4,8 @@ export class User {
   userType: string;
   email: string;
 }
+
+export class UserDtoResponse {
+  username: string;
+  email: string;
+}
