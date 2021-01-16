@@ -1,3 +1,5 @@
+import {MinimumUserInfoDto} from "./Project";
+
 export class AgileSprintDtoResponse {
   id: number;
   startDate: string;

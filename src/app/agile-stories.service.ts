@@ -18,4 +18,16 @@ export class AgileStoriesService {
   save(agileStoryDtoRequest: AgileStoryDtoRequest): Observable<AgileStoryDtoResponse> {
     return this.http.post<AgileStoryDtoResponse>(`${this.baseUrl}`, agileStoryDtoRequest);
   }
+
+  getAgileStoriesByProjectId(projectId: number): Observable<AgileStoryDtoResponse[]> {
+    return this.http.get<AgileStoryDtoResponse[]>(`${this.baseUrl}/project/${projectId}`);
+  }
+
+  getAgileStoryById(storyId: number): Observable<AgileStoryDtoResponse> {
+    return this.http.get<AgileStoryDtoResponse>(`${this.baseUrl}/${storyId}`);
+  }
+
+  updateAgileStoryStatus(storyId: number, newStatus: string): Observable<AgileStoryDtoResponse> {
+    return this.http.put<AgileStoryDtoResponse>(`${this.baseUrl}/status/${storyId}?status=${newStatus}`, {});
+  }
 }

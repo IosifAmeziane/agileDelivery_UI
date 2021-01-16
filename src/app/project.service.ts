@@ -21,7 +21,6 @@ export class ProjectService {
   }
 
   assignUserToProject(projectName: string, username: string) {
-      console.log("called assign user");
       const obj = this.http.get<any>(`${this.baseUrl}/assign-users?projectName=${projectName}&username=${username}`)
         .subscribe(data => {
           console.log(data);

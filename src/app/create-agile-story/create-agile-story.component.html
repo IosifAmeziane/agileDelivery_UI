@@ -1,4 +1,4 @@
-<div class="col-lg-6">
+<div class="col-lg-12">
   <h1 class="text-center">Create sprint</h1>
   <div class="card">
     <div class="card-body">
@@ -52,7 +52,11 @@
             <option *ngFor="let project of projectList | async" [ngValue]="project.id">{{project.name}}</option>
           </select>
         </div>
-        <button type="submit" class="btn btn-info" (click)="save()">Save story</button>
+
+        <mat-dialog-actions>
+          <button mat-button class="mat-button mat-raised-button" (click)="close()">Close</button>
+          <button type="submit" class="btn btn-info" (click)="save()">Save story</button>
+        </mat-dialog-actions>
       </form>
     </div>
   </div>

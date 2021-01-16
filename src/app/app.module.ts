@@ -17,6 +17,12 @@ import { CreateAgileSprintComponent } from './create-agile-sprint/create-agile-s
 import { AgileStoriesComponent } from './agile-stories/agile-stories.component';
 import { CreateAgileStoryComponent } from './create-agile-story/create-agile-story.component';
 import { ProjectDetailedViewComponent } from './project-detailed-view/project-detailed-view.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from "@angular/material/button";
+import { StoryListComponent } from './story-list/story-list.component';
+import { AgileStoriesListComponent } from './agile-stories-list/agile-stories-list.component';
+import { EditAgileStoryComponent } from './edit-agile-story/edit-agile-story.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +37,19 @@ import { ProjectDetailedViewComponent } from './project-detailed-view/project-de
     CreateAgileSprintComponent,
     AgileStoriesComponent,
     CreateAgileStoryComponent,
-    ProjectDetailedViewComponent
+    ProjectDetailedViewComponent,
+    StoryListComponent,
+    AgileStoriesListComponent,
+    EditAgileStoryComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    MatDialogModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [
     {
@@ -46,6 +58,7 @@ import { ProjectDetailedViewComponent } from './project-detailed-view/project-de
       multi: true
     }
   ],
+  entryComponents: [EditAgileStoryComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

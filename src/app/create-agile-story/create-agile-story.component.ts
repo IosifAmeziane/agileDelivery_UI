@@ -5,6 +5,7 @@ import {ProjectService} from '../project.service';
 import {Observable} from 'rxjs';
 import {ProjectResponseDto} from '../model/Project';
 import {Router} from '@angular/router';
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-create-agile-story',
@@ -26,7 +27,8 @@ export class CreateAgileStoryComponent implements OnInit {
   constructor(
     private agileStoryService: AgileStoriesService,
     private projectService: ProjectService,
-    private router: Router
+    private router: Router,
+    private modalReference: MatDialogRef<CreateAgileStoryComponent>
   ) { }
 
   ngOnInit() {
@@ -35,7 +37,12 @@ export class CreateAgileStoryComponent implements OnInit {
 
   save() {
     this.agileStoryService.save(this.agileStoryDtoRequest).subscribe(data => {
-      this.router.navigate(["/project-list"]);
+      this.modalReference.close();
+      this.router.navigate([`/agile-stories/${this.agileStoryDtoRequest.projectId}`]);
     });
+  }
+
+  close() {
+    this.modalReference.close();
   }
 }

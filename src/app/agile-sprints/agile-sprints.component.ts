@@ -3,6 +3,8 @@ import {Observable} from 'rxjs';
 import {AgileSprintDtoResponse} from '../model/AgileSprint';
 import {AgileSprintsService} from '../agile-sprints.service';
 import {ActivatedRoute} from '@angular/router';
+import {MatDialog} from "@angular/material/dialog";
+import {CreateAgileStoryComponent} from "../create-agile-story/create-agile-story.component";
 
 @Component({
   selector: 'app-agile-sprints',
@@ -16,7 +18,8 @@ export class AgileSprintsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private agileSprintsService: AgileSprintsService
+    private agileSprintsService: AgileSprintsService,
+    private modal: MatDialog
   ) { }
 
   ngOnInit() {
@@ -24,4 +27,7 @@ export class AgileSprintsComponent implements OnInit {
     this.agileSprints = this.agileSprintsService.getAgileSprintsByProjectId(this.projectId);
   }
 
+  createStoryModal() {
+    this.modal.open(CreateAgileStoryComponent);
+  }
 }

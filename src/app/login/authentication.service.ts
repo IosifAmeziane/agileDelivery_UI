@@ -8,11 +8,12 @@ import {map} from 'rxjs/operators';
 })
 export class AuthenticationService {
 
+  public static AUTHENTICATED_USER = 'authenticatedUser';
+  public static BASIC_AUTH_FLAG_B64 = 'basicAuthFlag';
+
   public username: string;
   public password: string;
 
-  AUTHENTICATED_USER = 'authenticatedUser';
-  BASIC_AUTH_FLAG_B64 = 'basicAuthFlag';
 
   constructor(private http: HttpClient) { }
 
@@ -24,17 +25,17 @@ export class AuthenticationService {
     }).pipe(map((res) => {
       this.username = username;
       this.password = password;
-      sessionStorage.setItem(this.AUTHENTICATED_USER, username);
+      sessionStorage.setItem(AuthenticationService.AUTHENTICATED_USER, username);
     }));
   }
 
   createAuthorizationHeader(username: string, password: string) {
     const authFlag = 'Basic ' + btoa(username + ':' + password);
-    sessionStorage.setItem(this.BASIC_AUTH_FLAG_B64, authFlag);
+    sessionStorage.setItem(AuthenticationService.BASIC_AUTH_FLAG_B64, authFlag);
     return authFlag;
   }
 
   getBasicAuthFlagFromSessionStorage() {
-    return sessionStorage.getItem(this.BASIC_AUTH_FLAG_B64);
+    return sessionStorage.getItem(AuthenticationService.BASIC_AUTH_FLAG_B64);
   }
 }

@@ -37,7 +37,6 @@ export class ProjectDetailedViewComponent implements OnInit {
   }
 
   inviteUser(username: string) {
-    console.log("called with ", username);
     this.projectService.assignUserToProject(this.project.name, username);
   }
 
