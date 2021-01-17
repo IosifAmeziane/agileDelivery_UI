@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import * as queryString from 'querystring';
 import {map} from 'rxjs/operators';
 
 @Injectable({
@@ -10,6 +9,8 @@ export class AuthenticationService {
 
   public static AUTHENTICATED_USER = 'authenticatedUser';
   public static BASIC_AUTH_FLAG_B64 = 'basicAuthFlag';
+  baseUrl = 'https://project-management-sda-api.herokuapp.com/users';
+
 
   public username: string;
   public password: string;
@@ -18,7 +19,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   authenticationService(username: string, password: string) {
-    return this.http.get('http://localhost:8081/users/logged-user', {
+    return this.http.get(`${this.baseUrl}/logged-user`, {
       headers : {
         Authorization: this.createAuthorizationHeader(username, password)
       }

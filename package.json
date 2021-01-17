@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --aot -prod"
+    "postinstall": "ng build --output-path dist"
   },
   "private": true,
   "dependencies": {
@@ -17,6 +17,7 @@
     "@angular/cli": "~8.0.0",
     "@angular/common": "~8.0.0",
     "@angular/compiler": "~8.0.0",
+    "@angular/compiler-cli": "~8.0.0",
     "@angular/core": "~8.0.0",
     "@angular/forms": "~8.0.0",
     "@angular/material": "^8.2.3",
@@ -33,7 +34,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.800.0",
-    "@angular/compiler-cli": "~8.0.0",
     "@angular/language-service": "~8.0.0",
     "@types/node": "~8.9.4",
     "@types/jasmine": "~3.3.8",

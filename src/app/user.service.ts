@@ -8,13 +8,13 @@ import {Observable} from 'rxjs';
 })
 export class UserService {
 
-  baseUrl = 'http://localhost:8081/users';
+  baseUrl = 'https://project-management-sda-api.herokuapp.com/users';
   constructor(private http: HttpClient) {
 
   }
 
   saveUser(user: User)  {
-    return this.http.post('http://localhost:8081/users', user);
+    return this.http.post(this.baseUrl, user);
   }
 
   findEmail(email: string): Observable<UserDtoResponse> {

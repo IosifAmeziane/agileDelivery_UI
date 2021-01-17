@@ -8,7 +8,8 @@ import {Observable} from 'rxjs';
 })
 export class AgileStoriesService {
 
-  baseUrl = 'http://localhost:8081/agile-stories';
+  baseUrl = 'https://project-management-sda-api.herokuapp.com/agile-stories';
+
   constructor(private http: HttpClient) { }
 
   getAgileStoriesByName(storyName: string, projectId: number): Observable<AgileStoryDtoResponse[]> {

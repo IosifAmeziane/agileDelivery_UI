@@ -8,9 +8,11 @@ import {Observable} from 'rxjs';
 })
 export class AgileSprintsService {
 
-  baseUrl = "http://localhost:8081/agile-sprints"
+  baseUrl = 'https://project-management-sda-api.herokuapp.com/agile-sprints';
+
   constructor(private http: HttpClient) { }
 
+  // tslint:disable-next-line:max-line-length
   // json-backend : { "id": "1", "name":"abc" , "status":"enabled" } | pentru exemplu consideram ca obiectul in backend se numeste UserStatusDtoResponse
   // pentru colectarea datelor definim un UserStatusDtoResponse in Angular care contine field-uri din backend cu acelasi nume.
 //   export class UserStatusDtoResponse {
