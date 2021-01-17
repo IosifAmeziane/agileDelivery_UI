@@ -23,6 +23,8 @@ import {MatButtonModule} from "@angular/material/button";
 import { StoryListComponent } from './story-list/story-list.component';
 import { AgileStoriesListComponent } from './agile-stories-list/agile-stories-list.component';
 import { EditAgileStoryComponent } from './edit-agile-story/edit-agile-story.component';
+import {DragDropModule} from "@angular/cdk/drag-drop";
+import { SprintWallComponent } from './sprint-wall/sprint-wall.component';
 
 @NgModule({
   declarations: [
@@ -40,13 +42,15 @@ import { EditAgileStoryComponent } from './edit-agile-story/edit-agile-story.com
     ProjectDetailedViewComponent,
     StoryListComponent,
     AgileStoriesListComponent,
-    EditAgileStoryComponent
+    EditAgileStoryComponent,
+    SprintWallComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     MatDialogModule,
+    DragDropModule,
     FormsModule,
     BrowserAnimationsModule,
     MatButtonModule

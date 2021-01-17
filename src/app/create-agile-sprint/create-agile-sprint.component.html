@@ -23,16 +23,10 @@
                    name="endDate">
           </div>
           <div class="form-group">
-            <label for="agileStories">Agile story ids:</label>
-            <input type="number"
-                   class="form-control"
-                   [(ngModel)]="agileSprint.storyIds"
-                   id="agileStories"
-                   placeholder="agileStories"
-                   name="agileStories"
-                   value="{{selectedStories}}"
-                   disabled
-            >
+            <label>Agile story ids:</label>
+            <div>
+              {{agileSprint.storyIds.toString()}}
+            </div>
           </div>
           <button type="submit" class="btn btn-info" (click)="saveAgileSprint()">Save sprint</button>
         </form>
@@ -74,7 +68,7 @@
             <td>
               {{agileStory.storyPoints}}
             </td>
-            <td *ngIf="!selectedStories.includes(agileStory.id); else remove_story">
+            <td *ngIf="!agileSprint.storyIds.includes(agileStory.id); else remove_story">
               <button
                 type="submit"
                 class="btn btn-success btn-sm"

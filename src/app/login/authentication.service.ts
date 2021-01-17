@@ -9,7 +9,7 @@ export class AuthenticationService {
 
   public static AUTHENTICATED_USER = 'authenticatedUser';
   public static BASIC_AUTH_FLAG_B64 = 'basicAuthFlag';
-  baseUrl = 'https://project-management-sda-api.herokuapp.com/users';
+  baseUrl = 'http://localhost:8081/users';
 
 
   public username: string;

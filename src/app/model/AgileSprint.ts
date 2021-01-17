@@ -24,5 +24,5 @@ export class AgileSprintDtoRequest {
   startDate: string;
   endDate: string;
   projectId: number;
-  storyIds: number[];
+  storyIds: number[] = [];
 }

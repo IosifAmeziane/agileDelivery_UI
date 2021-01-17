@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 })
 export class AgileStoriesService {
 
-  baseUrl = 'https://project-management-sda-api.herokuapp.com/agile-stories';
+  baseUrl = 'http://localhost:8081/agile-stories';
 
   constructor(private http: HttpClient) { }
 
@@ -30,5 +30,9 @@ export class AgileStoriesService {
 
   updateAgileStoryStatus(storyId: number, newStatus: string): Observable<AgileStoryDtoResponse> {
     return this.http.put<AgileStoryDtoResponse>(`${this.baseUrl}/status/${storyId}?status=${newStatus}`, {});
+  }
+
+  getAgileStoriesBySprintId(sprintId: number): Observable<AgileStoryDtoResponse[]> {
+    return this.http.get<AgileStoryDtoResponse[]>(`${this.baseUrl}/sprints/${sprintId}`);
   }
 }

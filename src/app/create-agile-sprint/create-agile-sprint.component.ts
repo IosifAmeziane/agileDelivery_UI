@@ -15,7 +15,6 @@ export class CreateAgileSprintComponent implements OnInit {
 
   agileSprint: AgileSprintDtoRequest = new AgileSprintDtoRequest();
   agileStories: Observable<AgileStoryDtoResponse[]>;
-  selectedStories: number[] = [];
   projectId: number;
   constructor(
     private agileSprintService: AgileSprintsService,
@@ -32,8 +31,6 @@ export class CreateAgileSprintComponent implements OnInit {
   saveAgileSprint() {
     this.projectId = this.route.snapshot.params["id"];
     this.agileSprint.projectId = this.projectId;
-    //TODO : check why binded array is not updated;
-    this.agileSprint.storyIds = this.selectedStories;
     this.agileSprintService.saveAgileSprint(this.agileSprint).subscribe(data => {
       this.router.navigate(["/agile-sprints", this.projectId]);
     });
@@ -44,11 +41,11 @@ export class CreateAgileSprintComponent implements OnInit {
   }
 
   assignStory(storyId: number) {
-    this.selectedStories.push(storyId);
+    this.agileSprint.storyIds.push(storyId);
   }
 
   removeStory(storyId: number) {
-    const index = this.selectedStories.indexOf(storyId, 0);
-    this.selectedStories.splice(index, 1);
+    const index =  this.agileSprint.storyIds.indexOf(storyId, 0);
+    this.agileSprint.storyIds.splice(index, 1);
   }
 }
